@@ -18,9 +18,8 @@ public class LivreService {
         return true;
     }
 
-    public boolean findById(Integer id){
-        livreRepository.findById(id);
-        return true;
+    public Livre findById(Integer id){
+       return livreRepository.findById(id).get();
     }
 
     public List<Livre> findAll(){
