@@ -50,3 +50,6 @@ vous le souhaitez ou dans le controller
 			<version>2.1.0</version>
 </dependency>
 
+cf sprinddoc.org
+```
+
