@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1")
 public class LivreController {
@@ -27,21 +29,21 @@ public class LivreController {
     }
 
     @GetMapping("/getAll-livre")
-    public ResponseEntity<?> getAllLivre( @RequestBody Livre livre){
-        livreService.findAll();
+    public ResponseEntity<List<Livre>> getAllLivre( ){
+
         return ResponseEntity.ok(livreService.findAll());
     }
 
     @PutMapping("/update-livre/{id}")
-    public ResponseEntity<?> updateLivre(@Valid @PathVariable(name = "id") int id, @RequestBody Livre livre){
-        livreService.updateById(id, livre);
-        return ResponseEntity.ok(livre);
+    public ResponseEntity<Livre> updateLivre(@PathVariable(name = "id") int id, @Valid   @RequestBody Livre livre){
+
+        return ResponseEntity.ok(livreService.updateById(id, livre));
     }
 
     @DeleteMapping("/delete-livre/{id}")
-    public ResponseEntity<?> deleteLivre(@Valid @PathVariable(name = "id") int id, @RequestBody Livre livre){
+    public ResponseEntity<String> deleteLivre( @PathVariable(name = "id") int id){
         livreService.deleteById(id);
-        return ResponseEntity.ok(livre);
+        return ResponseEntity.ok("Livre supprimé");
     }
 
 }

@@ -27,7 +27,7 @@ public class AuteurController {
     }
 
     @GetMapping ("/getAll-auteur")
-    public ResponseEntity<?> getAllAuteur ( @Valid  @RequestBody Auteur auteur){
+    public ResponseEntity<?> getAllAuteur (@Valid  @RequestBody Auteur auteur){
         auteurService.findAll();
         return ResponseEntity.ok(auteurService.findAll());
     }

@@ -23,7 +23,7 @@ public class LivreService {
     }
 
     public List<Livre> findAll(){
-        return  (List<Livre>)livreRepository.findAll();
+        return livreRepository.findAll();
 
     }
 
@@ -32,8 +32,13 @@ public class LivreService {
         return true;
     }
 
-    public boolean updateById(Integer id, Livre livre){
-        livreRepository.save(livre);
-        return true;
+    public Livre updateById(Integer id, Livre livre){
+        Livre livre1 = livreRepository.findById(id).get();
+        livre1.setTitre(livre.getTitre());
+        livre1.setAuteur(livre.getAuteur());
+        livre1.setGenre(livre.getGenre());
+        livre1.setAnneeDePublication(livre.getAnneeDePublication());
+         return livreRepository.save(livre1);
+
     }
 }
